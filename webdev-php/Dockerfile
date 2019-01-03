@@ -21,7 +21,7 @@ RUN curl -sL https://packages.sury.org/php/apt.gpg | apt-key add - \
     nginx \
     php$PHP_VERSION-dev php$PHP_VERSION-fpm php$PHP_VERSION-mysql php$PHP_VERSION-mbstring php$PHP_VERSION-curl php$PHP_VERSION-xml php$PHP_VERSION-zip \
     php-xdebug \
-    && mkdir -p /var/run/php-fpm && touch /var/run/php-fpm/php-fpm.sock && chown www-data:www-data /var/run/php-fpm/php-fpm.sock \
+    && mkdir -p /run/php-fpm && touch /run/php-fpm/php-fpm.sock && chown www-data:www-data /run/php-fpm/php-fpm.sock \
     && curl -sL https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer \
     && mkdir /var/www/.composer && chown owl:owl /var/www/.composer && chmod 750 /var/www/.composer \
     && sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/' /etc/php/$PHP_VERSION/fpm/php.ini \
