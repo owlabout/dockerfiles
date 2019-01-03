@@ -6,8 +6,7 @@ WORKDIR /opt/project
 RUN groupadd --gid 1000 owl \
     && useradd --uid 1000 --gid owl --shell /bin/bash --create-home owl \
     && apt-get -qq update && apt-get install -qqy --no-install-recommends \
-    ca-certificates curl unzip nano \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    ca-certificates curl unzip nano
 
 # install Nodejs
 RUN apt-get install -y gnupg \
@@ -36,10 +35,6 @@ RUN ln -sf /dev/stdout /var/log/nginx/default_access.log \
     && ln -sf /dev/stderr /var/log/nginx/default_error.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log \
     && ln -sf /dev/stderr /var/log/php${PHP_VERSION}-fpm.log
-
-# setup config
-COPY /nginx.conf /etc/nginx/nginx.conf
-COPY /www.conf /etc/php/$PHP_VERSION/fpm/pool.d/www.conf
 
 CMD chown 1000:1000 -R /opt/project/ \
     && service php$PHP_VERSION-fpm start \
