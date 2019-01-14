@@ -30,4 +30,4 @@ volumes:
 #...
 ```
 
-if the `$CERT_DOMAIN` environment variable is present and acme.json is linked in the container, [traefiks dumpcerts.sh](https://raw.githubusercontent.com/containous/traefik/master/contrib/scripts/dumpcerts.sh) will be used to create `/etc/davmail/davmail.p12` cert file.
+If the `$CERT_DOMAIN` environment variable is present and acme.json is linked in the container, [traefiks dumpcerts.sh](https://raw.githubusercontent.com/containous/traefik/master/contrib/scripts/dumpcerts.sh) will be used to create `/traefik/ssl/davmail.p12` cert file.

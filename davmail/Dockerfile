@@ -6,10 +6,9 @@ RUN   adduser davmail -D \
   && apk add --no-cache ca-certificates wget openssl jq util-linux \
   && mkdir /usr/local/davmail \
   && wget -qO- https://downloads.sourceforge.net/project/davmail/davmail/5.1.0/davmail-5.1.0-2891.zip | busybox unzip -q /tmp/davmail.zip -d /usr/local/davmail - \
-  && mkdir /var/log/davmail \
-  && chown davmail:davmail /var/log/davmail -R \
-  && mkdir -p /opt/certs \
-  && wget https://raw.githubusercontent.com/containous/traefik/master/contrib/scripts/dumpcerts.sh -O /opt/dumpcerts.sh
+  && mkdir /var/log/davmail && chown davmail:davmail /var/log/davmail -R \
+  && mkdir -p /traefik/ssl && chown davmail:davmail /traefik -R \
+  && wget https://raw.githubusercontent.com/containous/traefik/master/contrib/scripts/dumpcerts.sh -O /traefik/dumpcerts.sh
 
 COPY --chown=davmail:davmail run.sh /
 
@@ -22,4 +21,4 @@ WORKDIR       /usr/local/davmail
 
 USER davmail
 
-CMD /run.sh && /usr/local/davmail/davmail /etc/davmail/davmail.properties
+CMD /bin/sh /run.sh && /usr/local/davmail/davmail /etc/davmail/davmail.properties
