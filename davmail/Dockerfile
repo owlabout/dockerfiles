@@ -4,11 +4,11 @@ FROM openjdk:8-jre-alpine
 
 RUN   adduser davmail -D \
   && apk add --no-cache su-exec ca-certificates wget openssl jq util-linux \
-  && mkdir /usr/local/davmail \
+  && mkdir /usr/local/davmail && mkdir /var/log/davmail \
   && wget -qO- https://downloads.sourceforge.net/project/davmail/davmail/5.1.0/davmail-5.1.0-2891.zip | busybox unzip -q /tmp/davmail.zip -d /usr/local/davmail - \
-  && mkdir /var/log/davmail && chown davmail:davmail /var/log/davmail -R \
-  && mkdir -p /traefik/ssl/certs && mkdir /traefik/ssl/private && chown davmail:davmail /traefik -R \
-  && wget https://raw.githubusercontent.com/containous/traefik/v1.7/contrib/scripts/dumpcerts.sh -O /traefik/dumpcerts.sh
+  && mkdir -p /traefik/ssl/certs && mkdir /traefik/ssl/private \
+  && wget https://raw.githubusercontent.com/containous/traefik/v1.7/contrib/scripts/dumpcerts.sh -O /traefik/dumpcerts.sh \
+  && chown -R davmail:davmail /usr/local/davmail /var/log/davmail
 
 COPY run.sh /
 

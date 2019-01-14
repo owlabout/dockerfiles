@@ -23,6 +23,7 @@ The container expects the following parameters
 # ...
 environment: # optional
   - CERT_DOMAIN=davmail.example.com
+  - CERT_PASS=passwordSetInPropertiesFile
 volumes:
   - ./davmail.properties:/etc/davmail/davmail.properties
   # optional together with env CERT_DOMAIN
