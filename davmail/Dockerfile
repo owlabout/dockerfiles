@@ -22,4 +22,4 @@ WORKDIR       /usr/local/davmail
 
 USER davmail
 
-CMD bash /run.sh && /usr/local/davmail/davmail /etc/davmail/davmail.properties
+CMD /run.sh && /usr/local/davmail/davmail /etc/davmail/davmail.properties
