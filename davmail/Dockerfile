@@ -11,7 +11,7 @@ RUN   adduser davmail -D \
   && mkdir -p /opt/certs \
   && wget https://raw.githubusercontent.com/containous/traefik/master/contrib/scripts/dumpcerts.sh -O /opt/dumpcerts.sh
 
-COPY run.sh /
+COPY --chown=davmail:davmail run.sh /
 
 EXPOSE        1080
 EXPOSE        1143
