@@ -8,7 +8,7 @@ RUN   adduser davmail -D \
   && wget -qO- https://downloads.sourceforge.net/project/davmail/davmail/5.1.0/davmail-5.1.0-2891.zip | busybox unzip -q /tmp/davmail.zip -d /usr/local/davmail - \
   && mkdir /var/log/davmail && chown davmail:davmail /var/log/davmail -R \
   && mkdir -p /traefik/ssl && chown davmail:davmail /traefik -R \
-  && wget https://github.com/containous/traefik/blob/v1.7/contrib/scripts/dumpcerts.sh -O /traefik/dumpcerts.sh
+  && wget https://raw.githubusercontent.com/containous/traefik/v1.7/contrib/scripts/dumpcerts.sh -O /traefik/dumpcerts.sh
 
 COPY --chown=davmail:davmail run.sh /
 
