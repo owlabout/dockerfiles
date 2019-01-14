@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if [[ -z "$CERT_DOMAIN" ]]; then
     exit 0;
