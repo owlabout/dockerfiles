@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+  davmail:
+    image: https://github.com/owlabout/dockerfiles.git#:davmail
+    environment:
+      - API_KEY
+      - DOMAIN
+      - RECIPIENT
+    volumes:
+      - /var/log/traefik/access.log:/access.log
+    container_name: goaccess
+
+networks:
+  web:
+    external: true
