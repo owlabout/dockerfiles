@@ -20,5 +20,6 @@ environment: # optional
   - API_KEY # the mailgun api key
   - DOMAIN # the mailgun domain to send from
   - RECIPIENT # email where the report is sent
+  - API_DOMAIN # optional: api to send from. either eu or default
 #...
 ```
